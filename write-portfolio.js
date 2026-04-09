@@ -1,0 +1,357 @@
+const fs = require('fs');
+const content = `<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guillermo Estefan Puello — Full-Stack Developer & BI Architect</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#09090f;--bg2:#111118;--bg3:#16161f;--bg4:#1c1c28;--accent:#4f8ef7;--accent2:#7c3aed;--accent3:#06d6a0;--accent4:#f59e0b;--text:#f0f0f8;--text2:#8888a8;--text3:#4a4a62;--border:rgba(255,255,255,0.07);--card:rgba(255,255,255,0.03);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(9,9,15,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:var(--text);}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;gap:2.5rem;}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:0.82rem;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{background:var(--accent);color:white;padding:0.5rem 1.25rem;border-radius:8px;text-decoration:none;font-size:0.82rem;font-weight:600;}
+.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 3rem 5rem;max-width:1280px;margin:0 auto;gap:5rem;}
+.hero-left{flex:1;}
+.live-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(6,214,160,0.08);border:1px solid rgba(6,214,160,0.2);color:var(--accent3);padding:0.35rem 0.875rem;border-radius:100px;font-size:0.75rem;font-weight:600;margin-bottom:2rem;}
+.live-dot{width:6px;height:6px;background:var(--accent3);border-radius:50%;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line-height:1.0;letter-spacing:-3px;margin-bottom:0.5rem;}
+.hero h1 .hi{color:var(--text2);font-size:0.5em;letter-spacing:-1px;display:block;margin-bottom:0.2em;}
+.roles-row{display:flex;flex-wrap:wrap;gap:0.5rem;margin:1.75rem 0 2rem;}
+.role-pill{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text2);padding:0.3rem 0.875rem;border-radius:100px;font-size:0.78rem;font-weight:500;}
+.role-pill.main{background:rgba(79,142,247,0.08);border-color:rgba(79,142,247,0.25);color:var(--accent);}
+.hero-bio{color:var(--text2);font-size:1.05rem;line-height:1.85;max-width:520px;margin-bottom:2.5rem;}
+.hero-bio strong{color:var(--text);font-weight:500;}
+.cta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3.5rem;}
+.btn-p{background:var(--accent);color:white;padding:0.875rem 2rem;border-radius:10px;text-decoration:none;font-weight:600;font-size:0.9rem;}
+.btn-s{background:transparent;color:var(--text);padding:0.875rem 2rem;border-radius:10px;text-decoration:none;font-weight:500;font-size:0.9rem;border:1px solid var(--border);}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);padding-top:2rem;}
+.h-stat{text-align:center;padding:0 1rem;border-right:1px solid var(--border);}
+.h-stat:last-child{border-right:none;}
+.h-num{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--text);display:block;line-height:1;}
+.h-lab{font-size:0.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-top:0.3rem;display:block;}
+.hero-right{flex-shrink:0;}
+.photo-wrap{position:relative;width:320px;}
+.photo-wrap img{width:100%;height:400px;object-fit:cover;object-position:top center;border-radius:20px;border:1px solid var(--border);display:block;}
+.photo-glow{position:absolute;inset:-3px;border-radius:22px;background:linear-gradient(135deg,var(--accent),var(--accent2));z-index:-1;opacity:0.35;}
+.photo-badge{position:absolute;bottom:-1rem;right:-1rem;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:0.875rem 1rem;min-width:160px;}
+.pb-val{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent3);display:block;}
+.pb-lab{font-size:0.7rem;color:var(--text3);}
+.section-wrap{padding:6rem 3rem;max-width:1280px;margin:0 auto;}
+.s-label{font-size:0.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
+.s-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin-bottom:0.875rem;}
+.s-sub{color:var(--text2);font-size:0.95rem;max-width:560px;}
+.section-header{margin-bottom:3rem;}
+.diff-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;}
+.diff-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:all 0.3s;}
+.diff-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.3s;}
+.diff-card:hover{border-color:rgba(79,142,247,0.2);transform:translateY(-4px);}
+.diff-card:hover::after{opacity:1;}
+.d-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.25rem;}
+.diff-card h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:0.625rem;}
+.diff-card p{color:var(--text2);font-size:0.85rem;line-height:1.75;}
+.project-hero{background:var(--bg3);border:1px solid var(--border);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:1fr 420px;margin-bottom:2rem;}
+.pi{padding:3rem;}
+.p-tag{display:inline-block;background:rgba(79,142,247,0.1);color:var(--accent);border:1px solid rgba(79,142,247,0.25);padding:0.25rem 0.75rem;border-radius:100px;font-size:0.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.25rem;}
+.pi h3{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;letter-spacing:-1.5px;margin-bottom:0.25rem;}
+.pi .tgl{color:var(--accent3);font-size:0.875rem;font-weight:500;margin-bottom:1rem;}
+.pi .desc{color:var(--text2);font-size:0.875rem;line-height:1.8;margin-bottom:1.5rem;}
+.p-metrics{display:flex;gap:2rem;padding:1.25rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:1.5rem;}
+.pm{text-align:center;}
+.pm-val{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--text);display:block;line-height:1;}
+.pm-lab{font-size:0.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-top:0.2rem;}
+.stack{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.st{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text2);padding:0.2rem 0.6rem;border-radius:6px;font-size:0.72rem;font-weight:500;}
+.pv{background:var(--bg4);display:flex;align-items:center;justify-content:center;padding:2rem;border-left:1px solid var(--border);}
+.mockup{background:#0d0d14;border:1px solid rgba(255,255,255,0.1);border-radius:14px;width:100%;max-width:360px;overflow:hidden;}
+.m-header{background:linear-gradient(135deg,#1a1a2e,#16213e);padding:1rem 1.25rem;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;}
+.m-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.82rem;}
+.m-live{background:rgba(6,214,160,0.15);color:#06d6a0;padding:0.2rem 0.6rem;border-radius:100px;font-size:0.65rem;font-weight:700;}
+.m-kpis{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.04);}
+.m-kpi{background:#0d0d14;padding:0.875rem 1rem;}
+.m-kpi-v{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;}
+.m-kpi-l{font-size:0.62rem;color:var(--text3);}
+.m-bar{height:3px;background:rgba(255,255,255,0.05);margin:0.5rem 0 0;}
+.m-bar-f{height:100%;border-radius:100px;}
+.m-rows{padding:0.875rem 1rem;}
+.m-row{display:flex;align-items:center;gap:0.6rem;padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.03);}
+.m-av{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;flex-shrink:0;}
+.m-nm{font-size:0.7rem;flex:1;}
+.m-st{font-size:0.6rem;padding:0.1rem 0.45rem;border-radius:100px;font-weight:600;}
+.m-footer{padding:0.75rem 1rem;border-top:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;}
+.m-foot-t{font-size:0.62rem;color:var(--text3);}
+.m-foot-v{font-size:0.65rem;color:var(--accent3);font-weight:600;}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.pc{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all 0.3s;}
+.pc:hover{border-color:rgba(79,142,247,0.2);transform:translateY(-3px);}
+.pc-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.25rem;}
+.pc h3{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;letter-spacing:-0.5px;margin-bottom:0.2rem;}
+.pc .tgl{color:var(--accent3);font-size:0.78rem;font-weight:500;margin-bottom:0.75rem;}
+.pc p{color:var(--text2);font-size:0.85rem;line-height:1.75;margin-bottom:1.25rem;}
+.pc-status{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.72rem;font-weight:600;}
+.status-dot{width:5px;height:5px;border-radius:50%;}
+.meth-card{background:linear-gradient(135deg,rgba(79,142,247,0.06),rgba(124,58,237,0.06));border:1px solid rgba(79,142,247,0.15);border-radius:20px;padding:3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.meth-left h3{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;letter-spacing:-1px;margin-bottom:0.75rem;}
+.meth-left p{color:var(--text2);font-size:0.9rem;line-height:1.8;}
+.meth-steps{display:flex;flex-direction:column;gap:1rem;}
+.ms{display:flex;align-items:center;gap:1rem;}
+.ms-num{width:32px;height:32px;background:rgba(79,142,247,0.1);border:1px solid rgba(79,142,247,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:0.8rem;color:var(--accent);flex-shrink:0;}
+.ms-text{font-size:0.875rem;font-weight:500;}
+.skills-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;}
+.sg{margin-bottom:2rem;}
+.sg h4{font-size:0.72rem;font-weight:700;color:var(--text3);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:1.25rem;}
+.sb{display:flex;flex-direction:column;gap:1rem;}
+.sbr{display:flex;flex-direction:column;gap:0.4rem;}
+.sbr-h{display:flex;justify-content:space-between;}
+.sbr-n{font-size:0.875rem;font-weight:500;}
+.sbr-p{font-size:0.72rem;color:var(--text3);}
+.sbr-track{height:3px;background:rgba(255,255,255,0.06);border-radius:100px;overflow:hidden;}
+.sbr-fill{height:100%;border-radius:100px;}
+.certs{display:flex;flex-direction:column;gap:0.6rem;}
+.cert{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0.75rem 1rem;display:flex;gap:0.75rem;align-items:flex-start;transition:border-color 0.2s;}
+.cert-ico{font-size:1.2rem;flex-shrink:0;line-height:1;}
+.cert-n{font-size:0.8rem;font-weight:500;color:var(--text);line-height:1.35;}
+.cert-i{font-size:0.7rem;color:var(--text3);}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.tl{position:relative;padding-left:2rem;}
+.tl::before{content:'';position:absolute;left:0;top:4px;bottom:0;width:1px;background:var(--border);}
+.tl-item{position:relative;margin-bottom:2.5rem;}
+.tl-item::before{content:'';position:absolute;left:-2.4rem;top:5px;width:9px;height:9px;background:var(--accent);border-radius:50%;border:2px solid var(--bg);}
+.tl-date{font-size:0.7rem;color:var(--text3);font-weight:500;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:0.3rem;}
+.tl-role{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:0.125rem;}
+.tl-co{color:var(--accent);font-size:0.82rem;font-weight:500;margin-bottom:0.625rem;}
+.tl-desc{color:var(--text2);font-size:0.82rem;line-height:1.75;}
+.gh-section{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;text-align:center;}
+.gh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:2rem 0;}
+.gh-s{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:1.25rem;}
+.gh-v{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--text);display:block;line-height:1;}
+.gh-l{font-size:0.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-top:0.3rem;}
+.gh-link{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text);padding:0.625rem 1.25rem;border-radius:8px;text-decoration:none;font-size:0.85rem;font-weight:500;margin:0.5rem;}
+.contact-section{background:linear-gradient(135deg,rgba(79,142,247,0.08),rgba(124,58,237,0.08));border:1px solid rgba(79,142,247,0.15);border-radius:24px;padding:4rem;text-align:center;}
+.contact-section h2{font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;letter-spacing:-2px;margin-bottom:1rem;}
+.contact-section p{color:var(--text2);font-size:1rem;max-width:480px;margin:0 auto 2.5rem;}
+.contact-links{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:2rem;}
+.contact-item{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:12px;padding:1rem 1.5rem;text-decoration:none;color:var(--text);display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;font-weight:500;}
+.full-divider{border:none;border-top:1px solid var(--border);margin:0;}
+footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;max-width:1280px;margin:0 auto;}
+footer p{color:var(--text3);font-size:0.8rem;}
+.f-links{display:flex;gap:1.5rem;}
+.f-links a{color:var(--text3);text-decoration:none;font-size:0.8rem;}
+@media(max-width:900px){.hero{flex-direction:column-reverse;padding:7rem 1.5rem 3rem;gap:2rem;}.project-hero{grid-template-columns:1fr;}.pv{display:none;}.pg{grid-template-columns:1fr;}.skills-layout{grid-template-columns:1fr;}.exp-grid{grid-template-columns:1fr;}.meth-card{grid-template-columns:1fr;}.gh-grid{grid-template-columns:repeat(2,1fr);}.nav-links{display:none;}.section-wrap{padding:4rem 1.5rem;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">GEP<span>.</span></div>
+  <div class="nav-links">
+    <a href="#diferenciadores">Perfil</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#skills">Skills</a>
+    <a href="#experiencia">Experiencia</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <a href="mailto:guillermo.e.puello@gmail.com" class="nav-cta">Contactar</a>
+</nav>
+<div class="hero">
+  <div class="hero-left">
+    <div class="live-badge"><span class="live-dot"></span>Disponible para nuevas oportunidades</div>
+    <h1><span class="hi">Hola, soy</span>Guillermo<br><span style="color:var(--accent);">Estefan</span> Puello</h1>
+    <div class="roles-row">
+      <span class="role-pill main">Full-Stack Developer</span>
+      <span class="role-pill main">Product Architect</span>
+      <span class="role-pill">Senior BI Analyst</span>
+      <span class="role-pill">Scrum Master</span>
+      <span class="role-pill">Technical Lead</span>
+    </div>
+    <p class="hero-bio">Construyo productos digitales de impacto real — desde la <strong>vision de negocio</strong> hasta el <strong>deploy en produccion</strong>. Mi ventaja: combino una vision profunda de <strong>Business Intelligence</strong> con ejecucion tecnica Full-Stack, lo que me permite traducir necesidades del negocio en soluciones que realmente funcionan.</p>
+    <div class="cta-row">
+      <a href="#proyectos" class="btn-p">Ver proyectos</a>
+      <a href="https://github.com/GuillermoEstefanPuello" target="_blank" class="btn-s">GitHub</a>
+      <a href="https://www.linkedin.com/in/guillermo-esteban-puello-77450a174/" target="_blank" class="btn-s">LinkedIn</a>
+    </div>
+    <div class="hero-stats">
+      <div class="h-stat"><span class="h-num">5+</span><span class="h-lab">Anos de experiencia</span></div>
+      <div class="h-stat"><span class="h-num">3</span><span class="h-lab">Productos en desarrollo</span></div>
+      <div class="h-stat"><span class="h-num">534</span><span class="h-lab">Usuarios en produccion</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="photo-wrap">
+      <div style="width:100%;height:400px;border-radius:20px;border:1px solid var(--border);background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:4rem;font-weight:800;color:var(--accent);">GEP</div>
+      <div class="photo-glow"></div>
+      <div class="photo-badge"><span class="pb-val">19 sesiones</span><span class="pb-lab">ShepherdBI activo</span></div>
+    </div>
+  </div>
+</div>
+<hr class="full-divider">
+<section class="section-wrap" id="diferenciadores">
+  <div class="section-header">
+    <div class="s-label">Lo que me hace diferente</div>
+    <h2 class="s-title">Business Intelligence<br>+ ejecucion tecnica</h2>
+    <p class="s-sub">No soy solo un desarrollador que escribe codigo — soy alguien que entiende el negocio, define la arquitectura y lo construye de principio a fin.</p>
+  </div>
+  <div class="diff-grid">
+    <div class="diff-card"><div class="d-icon" style="background:rgba(79,142,247,0.1);">📊</div><h3>Vision de negocio a solucion tecnica</h3><p>Formacion como Senior BI Analyst me da capacidad unica para traducir requerimientos complejos de negocio en arquitecturas de software robustas. No solo construyo lo que me piden, entiendo por que se necesita.</p></div>
+    <div class="diff-card"><div class="d-icon" style="background:rgba(124,58,237,0.1);">🏗️</div><h3>Full-Stack end-to-end</h3><p>Desde el modelado del schema Prisma hasta el deploy en Render y Vercel. NestJS + Next.js + PostgreSQL + Redis + Docker. Monorepos completos con CI/CD funcional y APIs en produccion.</p></div>
+    <div class="diff-card"><div class="d-icon" style="background:rgba(6,214,160,0.1);">🚀</div><h3>Product Architect — DEVGEP+</h3><p>Desarrolle mi propia metodologia de construccion de productos digitales que combina pensamiento estrategico, hitos medibles y ejecucion disciplinada. Aplicada en ShepherdBI, KikiPay y TicketsTime.</p></div>
+    <div class="diff-card"><div class="d-icon" style="background:rgba(245,158,11,0.1);">🌎</div><h3>Experiencia regional multi-industria</h3><p>Logistica, farmaceutica, fintech e iglesias — liderazgo de analitica de datos en entornos corporativos multi-pais (RD, Venezuela). Contexto que pocos desarrolladores tienen.</p></div>
+    <div class="diff-card"><div class="d-icon" style="background:rgba(239,68,68,0.1);">⚡</div><h3>Alta velocidad de ejecucion</h3><p>ShepherdBI: de concepto a produccion en menos de 4 meses, con 19 sesiones de desarrollo, +50 hitos completados, 534 usuarios en produccion y arquitectura multi-tenant global.</p></div>
+    <div class="diff-card"><div class="d-icon" style="background:rgba(79,142,247,0.1);">🤖</div><h3>AI-augmented development</h3><p>Integro inteligencia artificial como copiloto real en el proceso de desarrollo para acelerar decisiones, documentar y generar valor mas rapido.</p></div>
+  </div>
+</section>
+<hr class="full-divider">
+<section class="section-wrap" id="proyectos">
+  <div class="section-header">
+    <div class="s-label">Proyectos</div>
+    <h2 class="s-title">Construyendo productos<br>que resuelven problemas reales</h2>
+    <p class="s-sub">Tres productos en distintas industrias, todos bajo la metodologia DEVGEP+, todos orientados a impacto medible.</p>
+  </div>
+  <div class="project-hero">
+    <div class="pi">
+      <span class="p-tag">SaaS · Global · Multi-tenant</span>
+      <h3>ShepherdBI</h3>
+      <p class="tgl">Donde la fe se encuentra con la inteligencia</p>
+      <p class="desc">Plataforma SaaS de Business Intelligence para iglesias — el primer sistema pastoral inteligente del mundo hispanohablante. Dashboard KPIs, motor de asignaciones con BullMQ, estados pastorales automaticos, modulos de Ministerios, Culto, Asistencia, Misiones, Anuncios, Donaciones, Videos y sistema de incorporacion multi-iglesia. Deploy en Render + Vercel con PostgreSQL en produccion.</p>
+      <div class="p-metrics">
+        <div class="pm"><span class="pm-val">534</span><span class="pm-lab">Usuarios live</span></div>
+        <div class="pm"><span class="pm-val">50+</span><span class="pm-lab">Hitos completados</span></div>
+        <div class="pm"><span class="pm-val">19</span><span class="pm-lab">Sesiones dev</span></div>
+        <div class="pm"><span class="pm-val">100%</span><span class="pm-lab">Uptime</span></div>
+      </div>
+      <div class="stack"><span class="st">Next.js 15</span><span class="st">NestJS</span><span class="st">PostgreSQL</span><span class="st">Prisma</span><span class="st">Redis</span><span class="st">BullMQ</span><span class="st">Docker</span><span class="st">Render</span><span class="st">Vercel</span><span class="st">Stripe</span><span class="st">JWT+RBAC</span><span class="st">TypeScript</span></div>
+    </div>
+    <div class="pv">
+      <div class="mockup">
+        <div class="m-header"><span class="m-title">ShepherdBI Dashboard</span><span class="m-live">LIVE</span></div>
+        <div class="m-kpis">
+          <div class="m-kpi"><div class="m-kpi-v" style="color:#4f8ef7;">534</div><div class="m-kpi-l">Total Miembros</div><div class="m-bar"><div class="m-bar-f" style="width:78%;background:linear-gradient(90deg,#4f8ef7,#7c3aed);"></div></div></div>
+          <div class="m-kpi"><div class="m-kpi-v" style="color:#06d6a0;">412</div><div class="m-kpi-l">Activos</div><div class="m-bar"><div class="m-bar-f" style="width:65%;background:linear-gradient(90deg,#06d6a0,#4f8ef7);"></div></div></div>
+          <div class="m-kpi"><div class="m-kpi-v" style="color:#f59e0b;">47</div><div class="m-kpi-l">Misiones pendientes</div><div class="m-bar"><div class="m-bar-f" style="width:30%;background:linear-gradient(90deg,#f59e0b,#ef4444);"></div></div></div>
+          <div class="m-kpi"><div class="m-kpi-v" style="color:#7c3aed;">10</div><div class="m-kpi-l">Ministerios</div><div class="m-bar"><div class="m-bar-f" style="width:55%;background:linear-gradient(90deg,#7c3aed,#4f8ef7);"></div></div></div>
+        </div>
+        <div class="m-rows">
+          <div class="m-row"><div class="m-av" style="background:rgba(79,142,247,0.15);color:#4f8ef7;">JH</div><span class="m-nm">Juan Hernandez</span><span class="m-st" style="background:rgba(6,214,160,0.1);color:#06d6a0;">Activo</span></div>
+          <div class="m-row"><div class="m-av" style="background:rgba(124,58,237,0.15);color:#7c3aed;">MG</div><span class="m-nm">Maria Gracia</span><span class="m-st" style="background:rgba(6,214,160,0.1);color:#06d6a0;">Activo</span></div>
+          <div class="m-row"><div class="m-av" style="background:rgba(245,158,11,0.15);color:#f59e0b;">DH</div><span class="m-nm">Daniel Hernandez</span><span class="m-st" style="background:rgba(245,158,11,0.1);color:#f59e0b;">Lider Min.</span></div>
+        </div>
+        <div class="m-footer"><span class="m-foot-t">Ministerios Leon de Juda</span><span class="m-foot-v">shepherdbi-web.vercel.app</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">
+    <div class="pc"><div class="pc-icon" style="background:rgba(6,214,160,0.1);">💳</div><h3>KikiPay</h3><p class="tgl">Fintech — Economia informal al sistema financiero</p><p>Plataforma de pagos QR para digitalizar la economia informal de RD y LATAM. Wallet como nucleo economico, retiro sin cuenta bancaria via PIN/token, BI financiero personal, modelo escrow-like y base de datos comercial estrategica consentida.</p><div class="stack" style="margin-bottom:1rem;"><span class="st">FastAPI</span><span class="st">Python</span><span class="st">PostgreSQL</span><span class="st">Wallet Ledger</span><span class="st">KYC</span><span class="st">Docker</span></div><div class="pc-status"><div class="status-dot" style="background:#f59e0b;"></div><span style="color:#f59e0b;">En desarrollo — 50% MVP</span></div></div>
+    <div class="pc"><div class="pc-icon" style="background:rgba(124,58,237,0.1);">🎟️</div><h3>TicketsTime</h3><p class="tgl">Boletera digital — norte: TicketMaster LATAM</p><p>Plataforma de venta de boletos digitales para eventos. Flujo de compra en 4 pasos, tickets QR, gestion de reembolsos, panel para productores y colaboradores. Estudio de mercado completado en Venezuela.</p><div class="stack" style="margin-bottom:1rem;"><span class="st">NestJS</span><span class="st">React</span><span class="st">PostgreSQL</span><span class="st">Stripe</span><span class="st">Docker</span><span class="st">TypeORM</span></div><div class="pc-status"><div class="status-dot" style="background:#4f8ef7;"></div><span style="color:#4f8ef7;">Arquitectura definida — iniciando</span></div></div>
+  </div>
+</section>
+<hr class="full-divider">
+<section class="section-wrap">
+  <div class="meth-card">
+    <div class="meth-left"><div class="s-label">Metodologia propia</div><h3>DEVGEP+</h3><p>Metodologia de construccion de productos digitales desarrollada y aplicada en todos mis proyectos. Combina pensamiento estrategico de negocio, arquitectura tecnica disciplinada, hitos medibles y documentacion como activo. Probada en ShepherdBI: de idea a produccion con 534 usuarios en menos de 4 meses.</p></div>
+    <div class="meth-steps">
+      <div class="ms"><div class="ms-num">D</div><span class="ms-text">Definir — vision, problema y alcance</span></div>
+      <div class="ms"><div class="ms-num">E</div><span class="ms-text">Estructurar — arquitectura y ERD</span></div>
+      <div class="ms"><div class="ms-num">V</div><span class="ms-text">Validar — hitos con entregables reales</span></div>
+      <div class="ms"><div class="ms-num">G</div><span class="ms-text">Gestionar — contexto, sesiones y decisiones</span></div>
+      <div class="ms"><div class="ms-num">E</div><span class="ms-text">Ejecutar — codigo limpio, deploy, pruebas</span></div>
+      <div class="ms"><div class="ms-num">P+</div><span class="ms-text">Producto+ — escalar, iterar, lanzar</span></div>
+    </div>
+  </div>
+</section>
+<hr class="full-divider">
+<section class="section-wrap" id="skills">
+  <div class="section-header"><div class="s-label">Stack tecnico</div><h2 class="s-title">Skills & Certificaciones</h2><p class="s-sub">Cobertura end-to-end desde el modelado de datos hasta el frontend, con vision de producto en cada capa.</p></div>
+  <div class="skills-layout">
+    <div>
+      <div class="sg"><h4>Backend & APIs</h4><div class="sb"><div class="sbr"><div class="sbr-h"><span class="sbr-n">NestJS + TypeScript</span><span class="sbr-p">95%</span></div><div class="sbr-track"><div class="sbr-fill" style="width:95%;background:linear-gradient(90deg,#4f8ef7,#7c3aed);"></div></div></div><div class="sbr"><div class="sbr-h"><span class="sbr-n">Node.js / Express</span><span class="sbr-p">90%</span></div><div class="sbr-track"><div class="sbr-fill" style="width:90%;background:linear-gradient(90deg,#4f8ef7,#7c3aed);"></div></div></div><div class="sbr"><div class="sbr-h"><span class="sbr-n">Python / FastAPI</span><span class="sbr-p">80%</span></div><div class="sbr-track"><div class="sbr-fill" style="width:80%;background:linear-gradient(90deg,#4f8ef7,#7c3aed);"></div></div></div><div class="sbr"><div class="sbr-h"><span class="sbr-n">REST APIs + JWT + RBAC</span><span class="sbr-p">95%</span></div><div class="sbr-track"><div class="sbr-fill" style="width:95%;background:linear-gradient(90deg,#4f8ef7,#7c3aed);"></div></div></div></div></div>
+      <div class="sg"><h4>Frontend</h4><div class="sb"><div class="sbr"><div class="sbr-h"><span class="sbr-n">Next.js 15 + React</span><span class="sbr-p">90%</span></div><div class="sbr-track"><div class="sbr-fill" style="width:90%;background:linear-gradient(90deg,#06d6a0,#4f8ef7);"></div></div></div><div class="sbr"><div class="sbr-h"><span class="sbr-n">TypeScript + Tailwind</span><span class="sbr-p">88%</span></div><div class="sbr-track"><div class="sbr-fill" style="width:88%;background:linear-gradient(90deg,#06d6a0,#4f8ef7);"></div></div></div><div class="sbr"><div class="sbr-h"><span class="sbr-n">JavaScript</span><span class="sbr-p">92%</span></div><div class="sbr-track"><div class="sbr-fill" style="width:92%;background:linear-gradient(90deg,#06d6a0,#4f8ef7);"></div></div></div></div></div>
+      <div class="sg"><h4>Data & Bases de datos</h4><div class="sb"><div class="sbr"><div class="sbr-h"><span class="sbr-n">PostgreSQL + Prisma ORM</span><span class="sbr-p">92%</span></div><div class="sbr-track"><div class="sbr-fill" style="width:92%;background:linear-gradient(90deg,#f59e0b,#06d6a0);"></div></div></div><div class="sbr"><div class="sbr-h"><span class="sbr-n">Power BI + DAX</span><span class="sbr-p">95%</span></div><div class="sbr-track"><div class="sbr-fill" style="width:95%;background:linear-gradient(90deg,#f59e0b,#06d6a0);"></div></div></div><div class="sbr"><div class="sbr-h"><span class="sbr-n">SQL Server / Oracle / MySQL</span><span class="sbr-p">88%</span></div><div class="sbr-track"><div class="sbr-fill" style="width:88%;background:linear-gradient(90deg,#f59e0b,#06d6a0);"></div></div></div><div class="sbr"><div class="sbr-h"><span class="sbr-n">Redis + BullMQ</span><span class="sbr-p">85%</span></div><div class="sbr-track"><div class="sbr-fill" style="width:85%;background:linear-gradient(90deg,#f59e0b,#06d6a0);"></div></div></div></div></div>
+      <div class="sg"><h4>DevOps & Cloud</h4><div class="sb"><div class="sbr"><div class="sbr-h"><span class="sbr-n">Docker + Docker Compose</span><span class="sbr-p">88%</span></div><div class="sbr-track"><div class="sbr-fill" style="width:88%;background:linear-gradient(90deg,#7c3aed,#4f8ef7);"></div></div></div><div class="sbr"><div class="sbr-h"><span class="sbr-n">Render + Vercel + CI/CD</span><span class="sbr-p">90%</span></div><div class="sbr-track"><div class="sbr-fill" style="width:90%;background:linear-gradient(90deg,#7c3aed,#4f8ef7);"></div></div></div><div class="sbr"><div class="sbr-h"><span class="sbr-n">Microsoft Azure</span><span class="sbr-p">75%</span></div><div class="sbr-track"><div class="sbr-fill" style="width:75%;background:linear-gradient(90deg,#7c3aed,#4f8ef7);"></div></div></div></div></div>
+    </div>
+    <div>
+      <div class="sg"><h4>Certificaciones</h4><div class="certs">
+        <div class="cert"><span class="cert-ico">🔵</span><div><div class="cert-n">De Cero a Analista de Datos con Power BI</div><div class="cert-i">Grow Up Data Analytics · Feb 2026</div></div></div>
+        <div class="cert"><span class="cert-ico">🟦</span><div><div class="cert-n">Data for Analysis with Microsoft Excel</div><div class="cert-i">Microsoft · Coursera · Ago 2025</div></div></div>
+        <div class="cert"><span class="cert-ico">🔷</span><div><div class="cert-n">Relational Database Administration (DBA)</div><div class="cert-i">IBM · Coursera · Jul 2025</div></div></div>
+        <div class="cert"><span class="cert-ico">🔷</span><div><div class="cert-n">Introduction to Data Analytics</div><div class="cert-i">IBM · Coursera · Jul 2025</div></div></div>
+        <div class="cert"><span class="cert-ico">🔷</span><div><div class="cert-n">Introduction to Software Engineering</div><div class="cert-i">IBM · Coursera · Sep 2025</div></div></div>
+        <div class="cert"><span class="cert-ico">🟩</span><div><div class="cert-n">Foundations of Project Management</div><div class="cert-i">Google · Coursera · Jun 2025</div></div></div>
+        <div class="cert"><span class="cert-ico">🟩</span><div><div class="cert-n">Foundations of Cybersecurity</div><div class="cert-i">Google · Coursera · Jul 2025</div></div></div>
+        <div class="cert"><span class="cert-ico">🟩</span><div><div class="cert-n">Google: IA y Productividad</div><div class="cert-i">Google · Santander · May 2025</div></div></div>
+        <div class="cert"><span class="cert-ico">🟤</span><div><div class="cert-n">Oracle Database Foundations & Platform</div><div class="cert-i">LearnQuest · Coursera · Jul 2025</div></div></div>
+        <div class="cert"><span class="cert-ico">🔵</span><div><div class="cert-n">Introduction to Scrum Master Profession</div><div class="cert-i">SkillUp EdTech · Coursera · Jun 2025</div></div></div>
+        <div class="cert"><span class="cert-ico">🔵</span><div><div class="cert-n">SQL Server 2019 Esencial</div><div class="cert-i">LinkedIn Learning · Jul 2025</div></div></div>
+        <div class="cert"><span class="cert-ico">⬛</span><div><div class="cert-n">Introduccion a Lean Six Sigma</div><div class="cert-i">Tec de Monterrey · Coursera · Sep 2025</div></div></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+<hr class="full-divider">
+<section class="section-wrap" id="experiencia">
+  <div class="section-header"><div class="s-label">Experiencia profesional</div><h2 class="s-title">Trayectoria con impacto</h2><p class="s-sub">Desde operaciones logisticas hasta inteligencia de negocios corporativa y desarrollo de productos digitales propios.</p></div>
+  <div class="exp-grid">
+    <div class="tl">
+      <div class="tl-item"><div class="tl-date">Ene 2025 — Presente</div><div class="tl-role">PM · DBA Senior · Full-Stack Developer</div><div class="tl-co">StarBound SRL</div><div class="tl-desc">Liderazgo tecnico de tres productos digitales: ShepherdBI (SaaS global live), KikiPay (fintech) y TicketsTime (boletera digital). Arquitectura, desarrollo full-stack, deployment y gestion del roadmap completo bajo metodologia DEVGEP+.</div></div>
+      <div class="tl-item"><div class="tl-date">Sep 2025</div><div class="tl-role">Senior Data & BI Analyst — Data Engineering</div><div class="tl-co">Grupo Delgado (GENCASA)</div><div class="tl-desc">Diseno y desarrollo de modelos semanticos y dashboards ejecutivos para analisis comercial multi-pais. Construccion de KPIs estrategicos, analisis de rentabilidad YoY. Integracion ETL desde multiples fuentes. Soporte analitico para operaciones farmaceuticas regionales.</div></div>
+      <div class="tl-item"><div class="tl-date">Sep 2022 — Dic 2024</div><div class="tl-role">Project Manager · Data Analyst</div><div class="tl-co">Impact Logistics</div><div class="tl-desc">Direccion completa de proyectos, planificacion y ejecucion de planes estrategicos. Analisis de datos de mercado y competencia para toma de decisiones basada en datos.</div></div>
+    </div>
+    <div class="tl">
+      <div class="tl-item"><div class="tl-date">Jul 2018 — Ago 2022</div><div class="tl-role">Gerente de Compras y Operaciones</div><div class="tl-co">Embassy Corporation</div><div class="tl-desc">Gestion de proveedores, compra de insumos medicos, control de inventarios y cadena de abastecimiento. Optimizacion de costos y cumplimiento de regulaciones.</div></div>
+      <div class="tl-item"><div class="tl-date">Feb 2015 — Abr 2018</div><div class="tl-role">Gerente de Operaciones</div><div class="tl-co">Medvel Freight Services</div><div class="tl-desc">Supervision y coordinacion de operaciones de transportacion bajo normas OEA. Manejo de equipo de 25 personas. Auditorias externas (Nestle, Hanes).</div></div>
+      <div class="tl-item"><div class="tl-date">Presente</div><div class="tl-role">Ingenieria de Software</div><div class="tl-co">UNICARIBE — 9/12 cuatrimestres</div><div class="tl-desc">Formacion formal en ingenieria de software complementando la experiencia practica en desarrollo de productos reales.</div></div>
+    </div>
+  </div>
+</section>
+<hr class="full-divider">
+<section class="section-wrap">
+  <div class="gh-section">
+    <div class="s-label" style="text-align:center;margin-bottom:0.5rem;">Actividad en GitHub</div>
+    <h3 style="font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;letter-spacing:-1px;margin-bottom:0.5rem;">Cientos de commits este ano</h3>
+    <p style="color:var(--text2);font-size:0.875rem;">ShepherdBI, KikiPay y TicketsTime activos en repositorios privados y publicos</p>
+    <div class="gh-grid">
+      <div class="gh-s"><span class="gh-v">200+</span><span class="gh-l">Commits 2026</span></div>
+      <div class="gh-s"><span class="gh-v">3</span><span class="gh-l">Repos activos</span></div>
+      <div class="gh-s"><span class="gh-v">19</span><span class="gh-l">Sesiones ShepherdBI</span></div>
+      <div class="gh-s"><span class="gh-v">50+</span><span class="gh-l">Hitos completados</span></div>
+    </div>
+    <div>
+      <a href="https://github.com/GuillermoEstefanPuello" target="_blank" class="gh-link">GitHub Profile</a>
+      <a href="https://www.linkedin.com/in/guillermo-esteban-puello-77450a174/" target="_blank" class="gh-link">LinkedIn Profile</a>
+      <a href="https://shepherdbi-web.vercel.app" target="_blank" class="gh-link">Ver ShepherdBI Live</a>
+    </div>
+  </div>
+</section>
+<hr class="full-divider">
+<section class="section-wrap" id="contacto">
+  <div class="contact-section">
+    <div class="s-label" style="text-align:center;margin-bottom:0.75rem;">Hablamos?</div>
+    <h2>Construyamos algo<br>extraordinario juntos</h2>
+    <p>Disponible para proyectos desafiantes, posiciones de liderazgo tecnico y colaboraciones donde el negocio y la tecnologia se encuentren.</p>
+    <div class="contact-links">
+      <a href="mailto:guillermo.e.puello@gmail.com" class="contact-item">📧 guillermo.e.puello@gmail.com</a>
+      <a href="tel:+18294856391" class="contact-item">📱 829-485-6391</a>
+      <a href="https://github.com/GuillermoEstefanPuello" target="_blank" class="contact-item">GitHub</a>
+      <a href="https://www.linkedin.com/in/guillermo-esteban-puello-77450a174/" target="_blank" class="contact-item">LinkedIn</a>
+    </div>
+    <p style="font-size:0.8rem;color:var(--text3);">Santo Domingo Este, Republica Dominicana</p>
+  </div>
+</section>
+<footer>
+  <p>2026 Guillermo Estefan Puello — Construido con DEVGEP+</p>
+  <div class="f-links">
+    <a href="https://github.com/GuillermoEstefanPuello" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/guillermo-esteban-puello-77450a174/" target="_blank">LinkedIn</a>
+    <a href="mailto:guillermo.e.puello@gmail.com">Email</a>
+  </div>
+</footer>
+</body>
+</html>`;
+
+fs.writeFileSync('index.html', content);
+console.log('index.html escrito OK - ' + content.split('\n').length + ' lineas');
