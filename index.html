@@ -113,7 +113,7 @@
 </a>
 <nav class="flex items-center gap-3 md:gap-8 whitespace-nowrap text-[11px] md:text-xs font-mono text-xs tracking-wider text-neutral-600 dark:text-neutral-400">
 <a class="hidden md:inline-block hover:text-black dark:hover:text-white transition-colors" href="#manifiesto">CRITERIO</a>
-<a class="hidden md:inline-block hover:text-black dark:hover:text-white transition-colors" href="#contribuciones">934 CONTRIBS EN 2026</a>
+<a class="hidden md:inline-block hover:text-black dark:hover:text-white transition-colors" href="#contribuciones"><span data-contribs>934</span> CONTRIBS 12 MESES</a>
 <a class="text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1 hover:underline" href="#sala-mando">
 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
           SALA DE MANDO
@@ -180,7 +180,7 @@
 <!-- Barra de Telemetría Inferior del Hero (Elon Musk) -->
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-12 border-t border-black/10">
 <div>
-<div class="font-mono-num text-3xl sm:text-4xl font-semibold text-ink">934</div>
+<div class="font-mono-num text-3xl sm:text-4xl font-semibold text-ink" data-contribs>934</div>
 <div class="font-mono text-xs text-neutral-500 uppercase tracking-wider mt-1">Contribuciones GitHub</div>
 <div class="font-mono text-[11px] text-neutral-400">Últimos 12 meses</div>
 </div>
@@ -258,13 +258,13 @@
         </div>
 <!-- Número Gigante con animación JS contadora -->
 <div class="font-display text-[6.5rem] sm:text-[10rem] lg:text-[13rem] font-extralight tracking-tighter leading-none text-white select-none">
-<span class="font-mono-num" id="counter-934">934</span>
+<span class="font-mono-num" id="counter-934" data-contribs>934</span>
 </div>
 <p class="font-mono text-sm sm:text-base text-neutral-400 uppercase tracking-[0.25em] mt-4 mb-8">
           Contribuciones en los últimos 12 meses
         </p>
 <p class="max-w-xl mx-auto text-neutral-400 font-light text-sm sm:text-base leading-relaxed mb-10">
-          Corte al 9 de octubre de 2026, según el gráfico de contribuciones de mi perfil de GitHub.
+          Actualizado automáticamente el <span data-contribs-date>9 de octubre de 2026</span>, según el gráfico de contribuciones de mi perfil de GitHub.
         </p>
 <a class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-white font-mono text-xs tracking-widest uppercase transition-all hover:scale-105 group" href="https://github.com/GuillermoEstefanPuello" rel="noopener noreferrer" target="_blank">
 <span>Verificar perfil en GitHub</span>
@@ -1070,6 +1070,7 @@
 <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-neutral-400 rounded-full"></span>SQL / Python</li>
 <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-neutral-400 rounded-full"></span>SaaS Architecture</li>
 <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-neutral-400 rounded-full"></span>Scrum / DEVGEP+</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-neutral-400 rounded-full"></span>QA &amp; Testing (Jira, Postman)</li>
 </ul>
 </div>
 </div>
@@ -1079,42 +1080,45 @@
 <div class="font-mono text-xs text-neutral-500 uppercase tracking-widest mb-3">TRAYECTORIA Y RECORRIDO</div>
 <h2 class="font-display text-3xl sm:text-5xl font-light text-ink tracking-tight mb-16">Experiencia de Liderazgo</h2>
 <div class="space-y-12 max-w-4xl">
-<!-- Item 1 -->
+<!-- Item 1: StarBound (principal) -->
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-baseline pb-12 border-b border-black/10">
 <div class="md:col-span-4 font-mono text-xs text-emerald-600 font-semibold">
-          2025 — PRESENTE
+          ENE 2026 — PRESENTE
         </div>
 <div class="md:col-span-8">
-<h3 class="font-display text-xl font-bold text-ink">Founder &amp; Lead Developer</h3>
+<h3 class="font-display text-xl font-bold text-ink">Founder, QA Sr. &amp; Lead Developer</h3>
 <div class="font-mono text-xs text-neutral-500 mb-4">StarBound • Santo Domingo, República Dominicana</div>
 <p class="text-neutral-600 text-sm leading-relaxed">
             Fundación y dirección de StarBound. Diseñé y desarrollé Shepherd Platform de punta a punta: arquitectura multi-tenant, motor de BI pastoral, RBAC de 9 roles y 33 módulos productivos en 86 sesiones documentadas. Dirección técnica de JMBooks, SBPE, PatriaPulse, KikiPay y TicketsTime bajo metodología DEVGEP+.
           </p>
-</div>
-</div>
-<!-- Item 2 -->
-<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-baseline pb-12 border-b border-black/10">
-<div class="md:col-span-4 font-mono text-xs text-neutral-500">
-          2022 — 2025
-        </div>
-<div class="md:col-span-8">
-<h3 class="font-display text-xl font-bold text-ink">Senior BI Analyst &amp; Full-Stack Developer</h3>
-<div class="font-mono text-xs text-neutral-500 mb-4">Proyectos Corporativos • República Dominicana</div>
-<p class="text-neutral-600 text-sm leading-relaxed">
-            Diseño e implementación de dashboards ejecutivos de Business Intelligence, automatización de flujos de datos y aplicaciones web para organizaciones dominicanas. Análisis estadístico y arquitectura orientada a la toma de decisiones.
+<p class="text-neutral-600 text-sm leading-relaxed mt-4">
+            Responsable de calidad de todos los productos: pruebas funcionales y de regresión, compuertas de evidencia DEVGEP+ antes de cada release y seguimiento con Jira, Azure DevOps y Postman.
           </p>
 </div>
 </div>
-<!-- Item 3 -->
-<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-baseline">
+<!-- Item 2: DiamondPages.ai (respaldo, compacto) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-baseline pb-12 border-b border-black/10">
 <div class="md:col-span-4 font-mono text-xs text-neutral-500">
-          2019 — 2022
+          DIC 2024 — DIC 2025
         </div>
 <div class="md:col-span-8">
-<h3 class="font-display text-xl font-bold text-ink">Full-Stack Developer Independiente</h3>
-<div class="font-mono text-xs text-neutral-500 mb-4">Santo Domingo, República Dominicana</div>
+<h3 class="font-display text-lg font-semibold text-ink">Full-Stack Developer</h3>
+<div class="font-mono text-xs text-neutral-500 mb-3">DiamondPages.ai • Miami, EE. UU. (remoto)</div>
 <p class="text-neutral-600 text-sm leading-relaxed">
-            Desarrollo de soluciones a medida, interfaces reactivas con React, APIs en Node.js y modelado relacional para clientes comerciales.
+            Desarrollos a la medida de punta a punta para clientes de la plataforma, con pruebas y despliegues incluidos.
+          </p>
+</div>
+</div>
+<!-- Item 3: Grupo Delgado (respaldo, compacto) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-baseline">
+<div class="md:col-span-4 font-mono text-xs text-neutral-500">
+          2022 — 2024
+        </div>
+<div class="md:col-span-8">
+<h3 class="font-display text-lg font-semibold text-ink">Senior Data &amp; BI Analyst</h3>
+<div class="font-mono text-xs text-neutral-500 mb-3">Grupo Delgado • República Dominicana</div>
+<p class="text-neutral-600 text-sm leading-relaxed">
+            Saneé 20 años de datos en SAP, detecté una pérdida potencial de RD$17 millones por rotación de inventario, reparé el Rolling Forecast y automaticé el flujo de datos en streaming para 6 compañías en 3 países.
           </p>
 </div>
 </div>
@@ -1214,7 +1218,8 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          animateValue("counter-934", 0, 934, 1800);
+          const contribsEl = document.getElementById("counter-934");
+          animateValue("counter-934", 0, parseInt(contribsEl.textContent.replace(/\D/g, ""), 10) || 0, 1800);
           observer.unobserve(entry.target);
         }
       });
