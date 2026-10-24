@@ -20,8 +20,6 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Leer contribuciones y actualizar index.html
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 .github/scripts/update_contribs.py
 
       - name: Commit y push si cambió
