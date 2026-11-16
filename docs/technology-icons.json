@@ -1,0 +1,215 @@
+{
+  "checkedDate": "2026-11-15",
+  "purpose": "Identificación de tecnologías, sin patrocinio ni afiliación.",
+  "marks": [
+    {
+      "name": "Python",
+      "file": "python.svg",
+      "url": "https://raw.githubusercontent.com/devicons/devicon/v2.17.0/icons/python/python-original.svg",
+      "collection": "Devicon v2.17.0",
+      "license": "MIT",
+      "image": "assets/technologies/python.svg",
+      "sha256": "71493b4a732f0532b3a03a7a95da3ee11a65766367c8303b901ffbe7bf91a3a2",
+      "sourceSha256": "71493b4a732f0532b3a03a7a95da3ee11a65766367c8303b901ffbe7bf91a3a2",
+      "modifications": "Ninguna; proporciones y colores del archivo de origen conservados."
+    },
+    {
+      "name": "JavaScript",
+      "file": "javascript.svg",
+      "url": "https://raw.githubusercontent.com/devicons/devicon/v2.17.0/icons/javascript/javascript-original.svg",
+      "collection": "Devicon v2.17.0",
+      "license": "MIT",
+      "image": "assets/technologies/javascript.svg",
+      "sha256": "0656ff65fc8eeacda5c78d7f9ffe91ec1eb919db64f56e0b7dcd460af4bbd36c",
+      "sourceSha256": "0656ff65fc8eeacda5c78d7f9ffe91ec1eb919db64f56e0b7dcd460af4bbd36c",
+      "modifications": "Ninguna; proporciones y colores del archivo de origen conservados."
+    },
+    {
+      "name": "TypeScript",
+      "file": "typescript.svg",
+      "url": "https://raw.githubusercontent.com/devicons/devicon/v2.17.0/icons/typescript/typescript-original.svg",
+      "collection": "Devicon v2.17.0",
+      "license": "MIT",
+      "image": "assets/technologies/typescript.svg",
+      "sha256": "c9191199f4049920c2fc19035b8a6664f37f4689fcd9e8434e786097e78863f0",
+      "sourceSha256": "c9191199f4049920c2fc19035b8a6664f37f4689fcd9e8434e786097e78863f0",
+      "modifications": "Ninguna; proporciones y colores del archivo de origen conservados."
+    },
+    {
+      "name": "C#",
+      "file": "csharp.svg",
+      "url": "https://raw.githubusercontent.com/devicons/devicon/v2.17.0/icons/csharp/csharp-original.svg",
+      "collection": "Devicon v2.17.0",
+      "license": "MIT",
+      "image": "assets/technologies/csharp.svg",
+      "sha256": "7093478d0888e22a224b6fa832da6c9ffd14c433de8bd14aab0c1cb50925f3ee",
+      "sourceSha256": "7093478d0888e22a224b6fa832da6c9ffd14c433de8bd14aab0c1cb50925f3ee",
+      "modifications": "Ninguna; proporciones y colores del archivo de origen conservados."
+    },
+    {
+      "name": "PowerShell",
+      "file": "powershell.svg",
+      "url": "https://raw.githubusercontent.com/devicons/devicon/v2.17.0/icons/powershell/powershell-original.svg",
+      "collection": "Devicon v2.17.0",
+      "license": "MIT",
+      "image": "assets/technologies/powershell.svg",
+      "sha256": "f72bc9843ff04005045b659f1ce960d03ddf7707fe02cb5d3dee373914a6d750",
+      "sourceSha256": "f72bc9843ff04005045b659f1ce960d03ddf7707fe02cb5d3dee373914a6d750",
+      "modifications": "Ninguna; proporciones y colores del archivo de origen conservados."
+    },
+    {
+      "name": ".NET",
+      "file": "dotnet.svg",
+      "url": "https://raw.githubusercontent.com/devicons/devicon/v2.17.0/icons/dotnetcore/dotnetcore-original.svg",
+      "collection": "Devicon v2.17.0",
+      "license": "MIT",
+      "image": "assets/technologies/dotnet.svg",
+      "sha256": "b1b71d747aaf277a00efeab3f5f5844578fc4a42bb605f60c3b0510256009ca4",
+      "sourceSha256": "b1b71d747aaf277a00efeab3f5f5844578fc4a42bb605f60c3b0510256009ca4",
+      "modifications": "Ninguna; proporciones y colores del archivo de origen conservados."
+    },
+    {
+      "name": "React",
+      "file": "react.svg",
+      "url": "https://raw.githubusercontent.com/devicons/devicon/v2.17.0/icons/react/react-original.svg",
+      "collection": "Devicon v2.17.0",
+      "license": "MIT",
+      "image": "assets/technologies/react.svg",
+      "sha256": "5825b649c8c04dec13ecf01d0182401bd0ec71789d2fa06224866d882cd1515f",
+      "sourceSha256": "5825b649c8c04dec13ecf01d0182401bd0ec71789d2fa06224866d882cd1515f",
+      "modifications": "Ninguna; proporciones y colores del archivo de origen conservados."
+    },
+    {
+      "name": "Next.js",
+      "file": "nextjs.svg",
+      "url": "https://raw.githubusercontent.com/devicons/devicon/v2.17.0/icons/nextjs/nextjs-original.svg",
+      "collection": "Devicon v2.17.0",
+      "license": "MIT",
+      "image": "assets/technologies/nextjs.svg",
+      "sha256": "d9435c4ede7133b376c0173a80226bb3856729366707cd96e9a66e39448d0288",
+      "sourceSha256": "d9435c4ede7133b376c0173a80226bb3856729366707cd96e9a66e39448d0288",
+      "modifications": "Ninguna; proporciones y colores del archivo de origen conservados."
+    },
+    {
+      "name": "PostgreSQL",
+      "file": "postgresql.svg",
+      "url": "https://raw.githubusercontent.com/devicons/devicon/v2.17.0/icons/postgresql/postgresql-original.svg",
+      "collection": "Devicon v2.17.0",
+      "license": "MIT",
+      "image": "assets/technologies/postgresql.svg",
+      "sha256": "f220a436258ed014c512ba4f9c0de6b9e5c2c4b55331a0a29f8c7a1a12c36443",
+      "sourceSha256": "f220a436258ed014c512ba4f9c0de6b9e5c2c4b55331a0a29f8c7a1a12c36443",
+      "modifications": "Ninguna; proporciones y colores del archivo de origen conservados."
+    },
+    {
+      "name": "Node.js",
+      "file": "nodejs.svg",
+      "url": "https://raw.githubusercontent.com/devicons/devicon/v2.17.0/icons/nodejs/nodejs-original.svg",
+      "collection": "Devicon v2.17.0",
+      "license": "MIT",
+      "image": "assets/technologies/nodejs.svg",
+      "sha256": "3218687c5ea24a4d4c0a33dc5c287da38c33a72dcfe9382469d7ce4e0bf661fb",
+      "sourceSha256": "3218687c5ea24a4d4c0a33dc5c287da38c33a72dcfe9382469d7ce4e0bf661fb",
+      "modifications": "Ninguna; proporciones y colores del archivo de origen conservados."
+    },
+    {
+      "name": "NestJS",
+      "file": "nestjs.svg",
+      "url": "https://raw.githubusercontent.com/devicons/devicon/v2.17.0/icons/nestjs/nestjs-original.svg",
+      "collection": "Devicon v2.17.0",
+      "license": "MIT",
+      "image": "assets/technologies/nestjs.svg",
+      "sha256": "97ae5e5666850f1f6119871a4197bef2da3472cd2d40a32e9420792a8bfcd360",
+      "sourceSha256": "97ae5e5666850f1f6119871a4197bef2da3472cd2d40a32e9420792a8bfcd360",
+      "modifications": "Ninguna; proporciones y colores del archivo de origen conservados."
+    },
+    {
+      "name": "FastAPI",
+      "file": "fastapi.svg",
+      "url": "https://raw.githubusercontent.com/devicons/devicon/v2.17.0/icons/fastapi/fastapi-original.svg",
+      "collection": "Devicon v2.17.0",
+      "license": "MIT",
+      "image": "assets/technologies/fastapi.svg",
+      "sha256": "7ef41f6a363b00ff595e6d0b933c025c92cbfae29dc1df24b2f6eb8b476ee486",
+      "sourceSha256": "7ef41f6a363b00ff595e6d0b933c025c92cbfae29dc1df24b2f6eb8b476ee486",
+      "modifications": "Ninguna; proporciones y colores del archivo de origen conservados."
+    },
+    {
+      "name": "Docker",
+      "file": "docker.svg",
+      "url": "https://raw.githubusercontent.com/devicons/devicon/v2.17.0/icons/docker/docker-original.svg",
+      "collection": "Devicon v2.17.0",
+      "license": "MIT",
+      "image": "assets/technologies/docker.svg",
+      "sha256": "3fd830ea69431ed7a0b8d068cd5b34ad3f00a1a78195d50f13ff56713f2462e1",
+      "sourceSha256": "3fd830ea69431ed7a0b8d068cd5b34ad3f00a1a78195d50f13ff56713f2462e1",
+      "modifications": "Ninguna; proporciones y colores del archivo de origen conservados."
+    },
+    {
+      "name": "Git",
+      "file": "git.svg",
+      "url": "https://raw.githubusercontent.com/devicons/devicon/v2.17.0/icons/git/git-original.svg",
+      "collection": "Devicon v2.17.0",
+      "license": "MIT",
+      "image": "assets/technologies/git.svg",
+      "sha256": "717a57ea97bf7e86de721dab3e68afac66332a10676d5c9abce4ae6a5a9c9983",
+      "sourceSha256": "717a57ea97bf7e86de721dab3e68afac66332a10676d5c9abce4ae6a5a9c9983",
+      "modifications": "Ninguna; proporciones y colores del archivo de origen conservados."
+    },
+    {
+      "name": "GitHub",
+      "file": "github.svg",
+      "url": "https://raw.githubusercontent.com/devicons/devicon/v2.17.0/icons/github/github-original.svg",
+      "collection": "Devicon v2.17.0",
+      "license": "MIT",
+      "image": "assets/technologies/github.svg",
+      "sha256": "45262793de6292206a895ed63593cdb1eaed82074173f7f4b5bdb3e427ca805a",
+      "sourceSha256": "45262793de6292206a895ed63593cdb1eaed82074173f7f4b5bdb3e427ca805a",
+      "modifications": "Ninguna; proporciones y colores del archivo de origen conservados."
+    },
+    {
+      "name": "Vercel",
+      "file": "vercel.svg",
+      "url": "https://raw.githubusercontent.com/devicons/devicon/v2.17.0/icons/vercel/vercel-original.svg",
+      "collection": "Devicon v2.17.0",
+      "license": "MIT",
+      "image": "assets/technologies/vercel.svg",
+      "sha256": "ab2bb3dfbed3aa637dc1847e42d1a576e50b0d7717092d781ab43e91073ace23",
+      "sourceSha256": "ab2bb3dfbed3aa637dc1847e42d1a576e50b0d7717092d781ab43e91073ace23",
+      "modifications": "Ninguna; proporciones y colores del archivo de origen conservados."
+    },
+    {
+      "name": "Power BI",
+      "file": "powerbi.svg",
+      "url": "https://raw.githubusercontent.com/gilbarbara/logos/b9edc65f8946027cb5e2fe6c772e914cf3649fba/logos/microsoft-power-bi.svg",
+      "collection": "SVG Logos b9edc65",
+      "license": "CC0-1.0",
+      "image": "assets/technologies/powerbi.svg",
+      "sha256": "e2ab82dea093d61e12fd381be2c06f31bc7bc163b87614b488a64e566af788a6",
+      "sourceSha256": "e2ab82dea093d61e12fd381be2c06f31bc7bc163b87614b488a64e566af788a6",
+      "modifications": "Ninguna; proporciones y colores del archivo de origen conservados."
+    },
+    {
+      "name": "Render",
+      "file": "render.svg",
+      "url": "https://raw.githubusercontent.com/simple-icons/simple-icons/c37b20d397a710fdd402aae3cb643b820b142074/icons/render.svg",
+      "collection": "Simple Icons c37b20d",
+      "license": "CC0-1.0",
+      "image": "assets/technologies/render.svg",
+      "sha256": "bd1597c44b4417a0f22f4ae6df79f935b4afd850f7a6a6717090b6f46f28e6d6",
+      "sourceSha256": "bd1597c44b4417a0f22f4ae6df79f935b4afd850f7a6a6717090b6f46f28e6d6",
+      "modifications": "Ninguna; proporciones y colores del archivo de origen conservados."
+    },
+    {
+      "name": "SQL",
+      "file": "sql.svg",
+      "image": "assets/technologies/sql.svg",
+      "url": null,
+      "collection": "Recurso tipográfico propio",
+      "license": "Propio",
+      "sha256": "7fb5815c1cc1bdbc9eeb605079f2749ff30af388cf1f74de12ae4b9752575a58",
+      "sourceSha256": null,
+      "modifications": "Texto SQL, sin atribuirle carácter de logotipo oficial."
+    }
+  ]
+}
