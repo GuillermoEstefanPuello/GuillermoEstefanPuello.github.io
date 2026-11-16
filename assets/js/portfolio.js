@@ -110,6 +110,7 @@
   const empty = document.getElementById('certification-empty');
   function credentialCard(item) {
     const article = document.createElement('article'); article.className = 'credential-card';
+    article.id = 'credencial-' + item.image.split('/').pop().replace(/\.[^.]+$/, '');
     const link = document.createElement('a'); link.href = item.image; link.dataset.lightbox = ''; link.dataset.imageTitle = item.title;
     link.setAttribute('aria-label', 'Ampliar certificado: ' + item.title);
     const image = document.createElement('img'); image.src = typeof item.thumbnail === 'string' && localImage.test(item.thumbnail) ? item.thumbnail : item.image; image.alt = item.title; image.width = item.width; image.height = item.height; image.loading = 'lazy'; image.decoding = 'async'; link.append(image);
@@ -139,6 +140,7 @@
       const group = shown.filter(item => item.category === key);
       if (!group.length) return;
       const section = document.createElement('section'); section.className = 'credential-group';
+      section.id = 'categoria-' + key;
       const heading = document.createElement('h3'); heading.textContent = document.querySelector('[data-cert-filter="' + key + '"]').textContent;
       const grid = document.createElement('div'); grid.className = 'credential-grid'; group.forEach(item => grid.append(credentialCard(item)));
       section.append(heading, grid); gallery.append(section);

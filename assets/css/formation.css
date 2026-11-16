@@ -1,0 +1,6 @@
+/* Mismo tratamiento editorial del desplegable Más sobre mí; sin animación añadida. */
+#formacion,.credential-group[id],.credential-card[id]{scroll-margin-top:100px}
+.formation-toggle{display:flex;align-items:center;justify-content:space-between;gap:24px;width:100%;min-height:56px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:transparent;color:var(--ink);padding:18px 0;text-align:left;cursor:pointer;font:12px/1.6 'JetBrains Mono',monospace}
+.formation-toggle:hover{color:var(--accent)}.formation-toggle svg{width:18px;height:18px;flex-shrink:0}.formation-toggle[aria-expanded=true] svg{transform:rotate(180deg)}
+.formation-panel{padding-top:28px}.formation-noscript{margin-top:18px}
+@media(max-width:767px){.formation-toggle{font-size:11px;gap:12px}.formation-panel{padding-top:24px}}

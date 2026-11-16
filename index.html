@@ -114,6 +114,7 @@
 <link rel="stylesheet" href="assets/css/portfolio.css"/>
 <link rel="stylesheet" href="assets/css/projects.css"/>
 <link rel="stylesheet" href="assets/css/technologies.css"/>
+<link rel="stylesheet" href="assets/css/formation.css"/>
 <noscript><style>.credential-filters,.simulator{display:none!important}</style></noscript>
 </head>
 <body class="transition-colors duration-700 ease-out">
@@ -476,12 +477,15 @@
 </div>
 </section>
 <section class="editorial-section" id="certificaciones" aria-labelledby="certifications-title">
-<div class="section-intro"><div><p class="eyebrow">Formación · Aprendizaje continuo</p><h2 class="section-heading" id="certifications-title">Conocimiento<br/>con respaldo.</h2></div><p class="section-lead">Certificaciones, cursos completados, insignias y preparación, con respaldo documental. Explora las categorías y amplía cada credencial.</p></div>
+<div class="section-intro" id="formacion"><div><p class="eyebrow">Formación · Aprendizaje continuo</p><h2 class="section-heading" id="certifications-title">Conocimiento<br/>con respaldo.</h2></div><p class="section-lead">Certificaciones, cursos completados, insignias y preparación, con respaldo documental. Explora las categorías y amplía cada credencial.</p></div>
+<button type="button" class="formation-toggle" id="formation-toggle" aria-expanded="false" aria-controls="formation-panel"><span data-formation-label>Ver las 23 certificaciones</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+<div class="formation-panel" id="formation-panel" hidden>
 <div class="credential-filters" role="group" aria-label="Filtrar certificaciones por categoría"><button type="button" data-cert-filter="all" aria-pressed="true" aria-controls="certification-gallery">Todas</button><button type="button" data-cert-filter="fullstack" aria-pressed="false" aria-controls="certification-gallery">Desarrollo Full Stack</button><button type="button" data-cert-filter="data" aria-pressed="false" aria-controls="certification-gallery">Datos, SQL y BI</button><button type="button" data-cert-filter="management" aria-pressed="false" aria-controls="certification-gallery">Gestión de proyectos y formación tecnológica</button><button type="button" data-cert-filter="security" aria-pressed="false" aria-controls="certification-gallery">Ciberseguridad</button><button type="button" data-cert-filter="ai" aria-pressed="false" aria-controls="certification-gallery">Inteligencia Artificial</button></div>
 <p class="screen-reader-only" id="certification-status" role="status" aria-live="polite" aria-atomic="true"></p><div id="certification-gallery"></div>
 <div class="credential-empty" id="certification-empty" hidden><h3>No hay credenciales en esta categoría.</h3><p>Selecciona otra categoría para seguir explorando.</p></div>
-<noscript><p class="section-lead">Activa JavaScript para consultar la galería, filtrar las credenciales y ampliar sus imágenes.</p></noscript>
 <details class="more-about"><summary>Más sobre mí</summary><div class="credential-grid" id="complementary-gallery"><p>Formación complementaria en liderazgo, inventario, contabilidad y herramientas de oficina.</p></div></details>
+</div>
+<noscript><p class="section-lead">Activa JavaScript para consultar la galería, filtrar las credenciales y ampliar sus imágenes.</p></noscript>
 </section>
 <!-- SECCIÓN 7: TRAYECTORIA PROFESIONAL (Línea de Tiempo Editorial) -->
 <section class="py-24 px-6 max-w-7xl mx-auto border-t border-black/10" id="trayectoria">
@@ -611,5 +615,6 @@
 <script src="assets/js/projects.js" defer></script>
 <script src="assets/js/certifications.js" defer></script>
 <script src="assets/js/portfolio.js" defer></script>
+<script src="assets/js/formation.js" defer></script>
 </body>
 </html>
