@@ -224,6 +224,31 @@ window.PORTFOLIO_CREDENTIALS = Object.freeze([
     "verification": "https://coursera.org/verify/41G7UBE48DFL"
   },
   {
+    "title": "Inteligencia Artificial - Nivel Avanzado",
+    "category": "ai",
+    "issuer": "INDOTEL · BID · Cymetria",
+    "date": "16/11/2026",
+    "kind": "Curso completado",
+    "image": "assets/certifications/ia-avanzada-indotel.webp",
+    "thumbnail": "assets/certifications/ia-avanzada-indotel-thumb.webp",
+    "width": 1800,
+    "height": 1400,
+    "publicReviewed": true,
+    "privacy": "Identificación personal y QR omitidos de esta copia pública."
+  },
+  {
+    "title": "Google: Inteligencia Artificial y productividad",
+    "category": "ai",
+    "issuer": "Santander Open Academy · Google",
+    "date": "19/05/2025",
+    "kind": "Curso completado",
+    "image": "assets/certifications/google-ia-productividad-santander.webp",
+    "thumbnail": "assets/certifications/google-ia-productividad-santander-thumb.webp",
+    "width": 1800,
+    "height": 1125,
+    "publicReviewed": true
+  },
+  {
     "title": "Claude 101",
     "category": "ai",
     "issuer": "Claude Academy",

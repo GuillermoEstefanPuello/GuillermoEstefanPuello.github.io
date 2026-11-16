@@ -130,20 +130,25 @@ test('miniaturas seguras, tipos y avisos conservan su significado', () => {
   }
 });
 
-test('el inventario real conserva 18 tecnológicas, cinco complementarias y las prioridades', () => {
+test('el inventario real conserva 20 tecnológicas, cinco complementarias y las prioridades', () => {
   const context = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../assets/js/certifications.js'), 'utf8'), context);
   const records = context.window.PORTFOLIO_CREDENTIALS;
-  assert.equal(records.length, 23);
+  assert.equal(records.length, 25);
   assert.ok(records.every(record => record.publicReviewed && record.kind && record.issuer && record.date));
   assert.deepEqual(Array.from(records.slice(0, 3), record => path.basename(record.image)), ['fullstack-avanzado.webp', 'fullstack-intermedio.webp', 'ibm-software-engineering.webp']);
   for (const record of records) {
     for (const key of ['image', 'thumbnail']) assert.ok(fs.existsSync(path.join(__dirname, '..', record[key])), record[key]);
   }
+  const orderedPage = run({ records });
+  assert.deepEqual(
+    orderedPage.gallery.children.slice(0, 2).map(group => group.children[0].textContent),
+    ['fullstack', 'ai']
+  );
   const page = run({ records });
-  assert.equal(page.gallery.children.reduce((sum, group) => sum + group.children[1].children.length, 0), 18);
+  assert.equal(page.gallery.children.reduce((sum, group) => sum + group.children[1].children.length, 0), 20);
   assert.equal(page.complementary.children.length, 5);
-  for (const [key, expected] of [['fullstack', 4], ['data', 8], ['management', 4], ['security', 1], ['ai', 1]]) {
+  for (const [key, expected] of [['fullstack', 4], ['data', 8], ['management', 4], ['security', 1], ['ai', 3]]) {
     page.buttons.find(button => button.dataset.certFilter === key).listeners.click();
     assert.equal(page.gallery.children[0].children[1].children.length, expected);
     assert.equal(page.empty.hidden, true);

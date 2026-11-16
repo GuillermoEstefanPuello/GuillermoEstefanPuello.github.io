@@ -59,13 +59,13 @@ test('HTML conserva introducción y anclas; botón real precede al panel inicial
  assert.match(section,/<div class="formation-panel" id="formation-panel" hidden>/);
  assert.ok(section.indexOf('class="section-lead"')<section.indexOf('id="formation-toggle"'));
  assert.ok(section.indexOf('id="formation-toggle"')<section.indexOf('id="formation-panel"'));
- assert.ok(section.includes('Ver las 23 certificaciones'));assert.ok(section.includes('Más sobre mí'));
+ assert.ok(section.includes('Ver las 25 certificaciones'));assert.ok(section.includes('Más sobre mí'));
  assert.equal((html.match(/src="assets\/js\/formation.js"/g)||[]).length,1);
 });
 
-test('estado inicial recogido y apertura/cierre sincronizan texto y aria sin reconstruir 23 tarjetas',()=>{
- const p=setup();assert.equal(p.panel.hidden,true);assert.equal(p.toggle.getAttribute('aria-expanded'),'false');assert.equal(p.label.textContent,'Ver las 23 certificaciones');
- const original=p.cards.slice();assert.equal(original.length,23);
+test('estado inicial recogido y apertura/cierre sincronizan texto y aria sin reconstruir 25 tarjetas',()=>{
+ const p=setup();assert.equal(p.panel.hidden,true);assert.equal(p.toggle.getAttribute('aria-expanded'),'false');assert.equal(p.label.textContent,'Ver las 25 certificaciones');
+ const original=p.cards.slice();assert.equal(original.length,25);
  for(let i=0;i<5;i++){
   p.toggle.click();assert.equal(p.panel.hidden,false);assert.equal(p.toggle.getAttribute('aria-expanded'),'true');assert.equal(p.label.textContent,'Ocultar certificaciones');
   assert.deepEqual(p.cards,original);assert.equal(p.filters.length,6);
