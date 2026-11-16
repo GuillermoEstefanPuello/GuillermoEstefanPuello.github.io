@@ -1,0 +1,23 @@
+# Trabajo interno y respaldos: nunca forman parte del sitio público.
+/.release-private/
+/CONTEXT.md
+/tools/
+/docs/*
+!/docs/PORTAFOLIO-GEP-009.md
+!/docs/technology-icons.json
+/Context/*
+!/Context/README.md
+**/__pycache__/
+*.pyc
+.env
+.env.*
+*.sqlite
+*.sqlite3
+*.db
+*.zip
+*.bundle
+/assets/projects/**/SOURCES.md
+/assets/projects/**/*.json
+/assets/projects/consulado/consulado-demo.webp
+/assets/projects/consulado/consulado-demo-thumb.webp
+/assets/projects/shepherd/shepherd-portada.webp
