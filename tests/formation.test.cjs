@@ -23,12 +23,12 @@ function setup(hash=''){
  document={activeElement:null,getElementById:id=>ids.get(id)||null,addEventListener(k,fn){(documentEvents[k]??=[]).push(fn)}};
  const panel=node('formation-panel'),toggle=node('formation-toggle'),label=node('label'),more=node('more',panel),gallery=node('certification-gallery',panel);
  node('formacion');node('certificaciones');node('complementary-gallery',more);
- const filters=['all','fullstack','data','management','security','ai'].map(key=>{const n=node('filter-'+key,panel);n.dataset.certFilter=key;return n});
+ const filters=['all','fullstack','data','management','security','ai','marketing'].map(key=>{const n=node('filter-'+key,panel);n.dataset.certFilter=key;return n});
  let cards=[],links=[];
  function render(category){
   for(const [id] of ids)if(id.startsWith('credencial-')||id.startsWith('categoria-'))ids.delete(id);
   cards=[];links=[];
-  for(const key of ['fullstack','data','management','security','ai'])if(category==='all'||category===key)node('categoria-'+key,gallery);
+  for(const key of ['fullstack','data','management','security','ai','marketing'])if(category==='all'||category===key)node('categoria-'+key,gallery);
   for(const record of records){
    if(record.category!=='complementary'&&category!=='all'&&record.category!==category)continue;
    const id='credencial-'+record.image.split('/').pop().replace(/\.[^.]+$/,'');
@@ -59,16 +59,16 @@ test('HTML conserva introducción y anclas; botón real precede al panel inicial
  assert.match(section,/<div class="formation-panel" id="formation-panel" hidden>/);
  assert.ok(section.indexOf('class="section-lead"')<section.indexOf('id="formation-toggle"'));
  assert.ok(section.indexOf('id="formation-toggle"')<section.indexOf('id="formation-panel"'));
- assert.ok(section.includes('Ver las 25 certificaciones'));assert.ok(section.includes('Más sobre mí'));
+ assert.ok(section.includes('Ver las 29 certificaciones'));assert.ok(section.includes('Más sobre mí'));
  assert.equal((html.match(/src="assets\/js\/formation.js"/g)||[]).length,1);
 });
 
-test('estado inicial recogido y apertura/cierre sincronizan texto y aria sin reconstruir 25 tarjetas',()=>{
- const p=setup();assert.equal(p.panel.hidden,true);assert.equal(p.toggle.getAttribute('aria-expanded'),'false');assert.equal(p.label.textContent,'Ver las 25 certificaciones');
- const original=p.cards.slice();assert.equal(original.length,25);
+test('estado inicial recogido y apertura/cierre sincronizan texto y aria sin reconstruir 29 tarjetas',()=>{
+ const p=setup();assert.equal(p.panel.hidden,true);assert.equal(p.toggle.getAttribute('aria-expanded'),'false');assert.equal(p.label.textContent,'Ver las 29 certificaciones');
+ const original=p.cards.slice();assert.equal(original.length,29);
  for(let i=0;i<5;i++){
   p.toggle.click();assert.equal(p.panel.hidden,false);assert.equal(p.toggle.getAttribute('aria-expanded'),'true');assert.equal(p.label.textContent,'Ocultar certificaciones');
-  assert.deepEqual(p.cards,original);assert.equal(p.filters.length,6);
+  assert.deepEqual(p.cards,original);assert.equal(p.filters.length,7);
   p.toggle.click();assert.equal(p.panel.hidden,true);assert.equal(p.toggle.getAttribute('aria-expanded'),'false');
  }
  assert.equal(p.toggle.events.click.length,1);assert.equal(p.filterClicks,0);

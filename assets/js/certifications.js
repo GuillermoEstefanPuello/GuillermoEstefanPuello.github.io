@@ -1,4 +1,4 @@
-/* 23 copias públicas revisadas visualmente en PORTAFOLIO-GEP-005; originales excluidos. */
+/* Galería pública: 29 credenciales; originales privados excluidos. */
 window.PORTFOLIO_CREDENTIALS = Object.freeze([
   {
     "title": "Desarrollo Web Full Stack - Nivel Avanzado",
@@ -158,6 +158,19 @@ window.PORTFOLIO_CREDENTIALS = Object.freeze([
     "verification": "https://coursera.org/verify/BZGPV168GOZ1"
   },
   {
+    "title": "Nube - Nivel Avanzado",
+    "category": "management",
+    "issuer": "INDOTEL · BID · Cymetria",
+    "date": "20/11/2026",
+    "kind": "Curso completado",
+    "image": "assets/certifications/nube-avanzado.webp",
+    "thumbnail": "assets/certifications/nube-avanzado-thumb.webp",
+    "width": 1800,
+    "height": 1400,
+    "publicReviewed": true,
+    "privacy": "Identificación personal y código QR omitidos de esta copia pública."
+  },
+  {
     "title": "Foundations of Project Management",
     "category": "management",
     "issuer": "Google · Coursera",
@@ -211,6 +224,32 @@ window.PORTFOLIO_CREDENTIALS = Object.freeze([
     "verification": "https://coursera.org/verify/YIKL3YINBOCC"
   },
   {
+    "title": "Ciberseguridad - Nivel Intermedio",
+    "category": "security",
+    "issuer": "INDOTEL · BID · Cymetria",
+    "date": "20/11/2026",
+    "kind": "Curso completado",
+    "image": "assets/certifications/ciberseguridad-intermedio.webp",
+    "thumbnail": "assets/certifications/ciberseguridad-intermedio-thumb.webp",
+    "width": 1800,
+    "height": 1400,
+    "publicReviewed": true,
+    "privacy": "Identificación personal y código QR omitidos de esta copia pública."
+  },
+  {
+    "title": "Ciberseguridad - Nivel Avanzado",
+    "category": "security",
+    "issuer": "INDOTEL · BID · Cymetria",
+    "date": "20/11/2026",
+    "kind": "Curso completado",
+    "image": "assets/certifications/ciberseguridad-avanzado.webp",
+    "thumbnail": "assets/certifications/ciberseguridad-avanzado-thumb.webp",
+    "width": 1800,
+    "height": 1400,
+    "publicReviewed": true,
+    "privacy": "Identificación personal y código QR omitidos de esta copia pública."
+  },
+  {
     "title": "Foundations of Cybersecurity",
     "category": "security",
     "issuer": "Google · Coursera",
@@ -260,6 +299,19 @@ window.PORTFOLIO_CREDENTIALS = Object.freeze([
     "height": 1319,
     "publicReviewed": true,
     "verification": "https://academy.claude.com/verify/52076858791c10cf5a84fa49dee45278"
+  },
+  {
+    "title": "Marketing Digital - Nivel Avanzado",
+    "category": "marketing",
+    "issuer": "INDOTEL · BID · Cymetria",
+    "date": "20/11/2026",
+    "kind": "Curso completado",
+    "image": "assets/certifications/marketing-digital-avanzado.webp",
+    "thumbnail": "assets/certifications/marketing-digital-avanzado-thumb.webp",
+    "width": 1800,
+    "height": 1400,
+    "publicReviewed": true,
+    "privacy": "Identificación personal y código QR omitidos de esta copia pública."
   },
   {
     "title": "Certificado de Graduación - Escuela de Liderazgo",

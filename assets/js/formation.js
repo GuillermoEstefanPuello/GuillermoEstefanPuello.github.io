@@ -18,7 +18,7 @@
     }
     panel.hidden = !expanded;
     toggle.setAttribute('aria-expanded', String(expanded));
-    label.textContent = expanded ? 'Ocultar certificaciones' : 'Ver las 25 certificaciones';
+    label.textContent = expanded ? 'Ocultar certificaciones' : 'Ver las 29 certificaciones';
     if (!expanded && (focusedInside || returnToToggle)) toggle.focus({ preventScroll: true });
   }
   toggle.addEventListener('click', () => setExpanded(panel.hidden));

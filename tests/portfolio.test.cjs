@@ -23,7 +23,7 @@ function run({ reduced = false, observerAvailable = true, records = [], count = 
   const complementary = new Element();
   const empty = new Element(); empty.selectors = { p: new Element() };
   const status = new Element();
-  const keys = ['all', 'fullstack', 'data', 'management', 'security', 'ai'];
+  const keys = ['all', 'fullstack', 'data', 'management', 'security', 'ai', 'marketing'];
   const buttons = keys.map(key => { const button = new Element(key); button.dataset.certFilter = key; return button; });
   const elements = { 'counter-934': counter, contribuciones: section, 'certification-gallery': gallery,
     'certification-empty': empty, 'certification-status': status, 'complementary-gallery': complementary, 'image-viewer': viewer };
@@ -130,11 +130,11 @@ test('miniaturas seguras, tipos y avisos conservan su significado', () => {
   }
 });
 
-test('el inventario real conserva 20 tecnológicas, cinco complementarias y las prioridades', () => {
+test('el inventario real conserva 24 tecnológicas, cinco complementarias y las prioridades', () => {
   const context = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../assets/js/certifications.js'), 'utf8'), context);
   const records = context.window.PORTFOLIO_CREDENTIALS;
-  assert.equal(records.length, 25);
+  assert.equal(records.length, 29);
   assert.ok(records.every(record => record.publicReviewed && record.kind && record.issuer && record.date));
   assert.deepEqual(Array.from(records.slice(0, 3), record => path.basename(record.image)), ['fullstack-avanzado.webp', 'fullstack-intermedio.webp', 'ibm-software-engineering.webp']);
   for (const record of records) {
@@ -146,9 +146,9 @@ test('el inventario real conserva 20 tecnológicas, cinco complementarias y las 
     ['fullstack', 'ai']
   );
   const page = run({ records });
-  assert.equal(page.gallery.children.reduce((sum, group) => sum + group.children[1].children.length, 0), 20);
+  assert.equal(page.gallery.children.reduce((sum, group) => sum + group.children[1].children.length, 0), 24);
   assert.equal(page.complementary.children.length, 5);
-  for (const [key, expected] of [['fullstack', 4], ['data', 8], ['management', 4], ['security', 1], ['ai', 3]]) {
+  for (const [key, expected] of [['fullstack', 4], ['data', 8], ['management', 5], ['security', 3], ['ai', 3], ['marketing', 1]]) {
     page.buttons.find(button => button.dataset.certFilter === key).listeners.click();
     assert.equal(page.gallery.children[0].children[1].children.length, expected);
     assert.equal(page.empty.hidden, true);
@@ -158,12 +158,12 @@ test('el inventario real conserva 20 tecnológicas, cinco complementarias y las 
   assert.equal(preparation.kind, 'Práctica de preparación'); assert.match(preparation.note, /No acredita/);
 });
 
-test('el contador real del HTML finaliza en 1,002 y conserva la fecha de corte', () => {
+test('el contador real del HTML finaliza en 1,012 y conserva la fecha de corte', () => {
   const html = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
   const count = html.match(/id="counter-934"[^>]*>([\d,]+)</)[1];
-  assert.equal(count, '1,002'); assert.match(html, /15 de noviembre de 2026/);
+  assert.equal(count, '1,012'); assert.match(html, /20 de noviembre de 2026/);
   const page = run({ count }); page.intersect(); page.tick(0); page.tick(1200);
-  assert.equal(page.counter.textContent, '1,002'); assert.equal(page.frames.size, 0);
+  assert.equal(page.counter.textContent, '1,012'); assert.equal(page.frames.size, 0);
 });
 
 test('un close diferido no vacía la imagen de un visor recién reabierto', () => {

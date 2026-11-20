@@ -99,7 +99,7 @@
 
   // Los archivos públicos se incorporan solo después de revisar imagen y metadatos.
   const localImage = /^assets\/certifications\/(?!.*(?:\.\.|[?#%\\]))[a-zA-Z0-9/_-]+\.(?:png|jpe?g|webp)$/i;
-  const categories = ['fullstack', 'ai', 'data', 'management', 'security'];
+  const categories = ['fullstack', 'ai', 'data', 'management', 'security', 'marketing'];
   const records = (Array.isArray(window.PORTFOLIO_CREDENTIALS) ? window.PORTFOLIO_CREDENTIALS : []).filter(item =>
     item && item.publicReviewed === true && typeof item.title === 'string' && item.title.trim() &&
     [...categories, 'complementary'].includes(item.category) && localImage.test(item.image) &&
